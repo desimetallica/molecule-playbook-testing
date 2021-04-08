@@ -43,26 +43,26 @@
         line: 'ENV_VAR=value'
       become: false
 
-    - name: Get the value of an enviroment variable.
-      environment:
-        - "{{ test_env }}"
-      shell: 'echo $test1'
-      register: test1
+      # - name: Get the value of an enviroment variable.
+      #environment:
+      #  - "{{ test_env }}"
+      #shell: 'echo $test1'
+      #register: test1
 
-    - name: Get the value of a second enviroment variable.
-      environment:
-        - "{{ test_env }}"
-      shell: 'echo $test2'
-      register: test2
+      # - name: Get the value of a second enviroment variable.
+      #environment:
+      #  - "{{ test_env }}"
+      #shell: 'echo $test2'
+      #register: test2
 
     # the output of the screen is registered on foo and
     # i can use the var in the playbook on the var i
     # have stdout and stderr dictionary
-    - name: Out test1 var.
-      debug: msg="the variable is {{ test1.stdout }}"
+    # - name: Out test1 var.
+    #  debug: msg="the variable is {{ test1.stdout }}"
 
-    - name: Out test2 var.
-      debug: msg="the variable is {{ test2.stdout }}"
+      #- name: Out test2 var.
+      #debug: msg="the variable is {{ test2.stdout }}"
 
     - name: Ensure Apache is installed.
       package:
