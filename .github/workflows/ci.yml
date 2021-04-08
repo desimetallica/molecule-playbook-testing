@@ -29,11 +29,21 @@ jobs:
       - name: Install test dependencies.
         run: pip3 install molecule molecule-docker docker docker-compose yamllint ansible-lint 
       
-      - name: Run Molecule tests.
-        run: molecule test
+      - name: Test Ansible roles with Molecule
+        # You may pin to the exact commit or the version.
+        # uses: robertdebock/molecule-action@915a29e7843c1b0e6a26b18697e6bbdd7f12dc74
+        uses: robertdebock/molecule-action@2.6.16
+        with:
+          # The [Docker Hub](https://hub.docker.com/) namespace where the image can be found.
+          namespace: geerlingguy # optional, default is robertdebock
+          # The image you want to run on.
+          image: docker-${{ matrix.distro }}-ansible # optional, default is fedora
+          # The tag of the container image to use.
+          tag: latest # optional, default is latest
+          # Options you can pass to [`tox`](https://tox.readthedocs.io/en/latest/), for example `--parallel all`.
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-          MOLECULE_DISTRO: ${{ matrix.distro }}
+
 
 
