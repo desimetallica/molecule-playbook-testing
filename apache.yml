@@ -73,13 +73,16 @@
     - name: Get out into var
       debug: var=output
 
-      # - name: Copy config into Apache2.
-      # copy:
-      #  src: apache2.conf
-      # dest: "{{ apache_config_dir }}"
-      # notify:
-      #  - restart apache2
-      #  - restart solr
+    - name: Copy webpage.
+      copy:
+        content: |
+          <html>
+          <head>Hello world</head>
+          <body>Hello world</body>
+          </html>
+        dest: "var/www/html/index.html"
+      notify:
+        - restart apache2
 
     - name: Make sure handlers are flushed immediatly.
       meta: flush_handlers
