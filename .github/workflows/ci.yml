@@ -18,7 +18,7 @@ jobs:
     
     steps:
       - name: Checkout out the codebase.
-        uses: actions/checkup@v2 # predefined github actions from github
+        uses: actions/checkout@v2 # predefined github actions from github
 
       - name: Set up Python 3.
         uses: action/setup-python@v2
