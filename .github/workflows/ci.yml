@@ -30,6 +30,9 @@ jobs:
       
       - name: Run Molecule tests.
         run: molecule test
-
+        eng:
+          PY_COLORS: '1'
+          ANSIBLE_FORCE_COLOR: '1'
+          MOLECULE_DISTRO: ${{ matrix.distro }}
 
 
